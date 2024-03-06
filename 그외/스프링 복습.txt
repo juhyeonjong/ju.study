@@ -1,0 +1,72 @@
+src 안에 spring폴더 안에 있는거
+
+1.servlet-context.xml
+  1) bean class로 경로를 넣은뒤(아마 들어있는 경로는 절대경로인듯 하다) 
+   property로 처음에는 /WEB-INF/views/ 마지막으로 .jsp를 붙여 다른곳에서 이름만 써도 자동으로 경로 찾아지게 만듬
+  2) context:component-scan 이건 객체를 찾을 때 이 경로를 뒤져서 찾아주세요 라는 뜻
+  3) interxeptor 
+  4) task.scheduler
+  5) 스프링 MVC 정적 리소스 resources mapping 이건 mapping할때 인터페이스 대신 만드는 거 인 듯 (잘 모르겠다)
+
+2.root-context
+  1) 안에 뭔가 객체들을 만든거 같은데 아마 DB연결+Mybatis 사용하는 코드가 적혀있는거 같다
+
+
+
+src 안에 view폴더 안에 있는 거
+ 1.taglib uri= 
+   이건 taglib에 관한 라이브러리를 가져오는것이다 c:when, c:if 등등 이런거 
+   (참고로 앞에 c는 경로 뒤에 prefix="c" 이거 붙여서 그런거)
+ 2.${}
+   Mybatis 문법으로 디비 값 가져오는 역할을 한다.
+
+
+src/main/resources 안에 있는 거
+ 1.mybatis_config.xml 
+   typeAlias 이걸로 type과 alias로 별명을 만들어 주면 mybatis에서 vo를 가져올때 alias를 가져와서 사용가능
+ 2.log4j.xml
+   system.out.println()처럼 로그남기는데 사용하는 라이브러리를 위한 xml인데 어디다가 써야하는지는 모르겠다.
+ 3.mappers
+  1) mapper namespace= 경로 이름이 없는데 무슨 원리인지 모르겠다.
+  2) resultType 이건 select로 찾은 값을 담는거, parameterType 이건 타입을 명시해주는듯..?
+
+
+
+src/main/java 안에 있는 거
+ 1.VO 
+   toString() 만드는 이유는 그냥 System 찍기 위해서 인 듯 하다
+ 2. DAO 
+   @Autowired
+   SqlSession sqlSession 이렇게 해둔건 객체를 상속하는건가? 어떻게?
+   그리고 여기서 만든 매소드들은 서비스에서 사용하는 듯 하다
+ 3.service 
+   dao를 통해 얻은 db값을 가공시키는 건데 왜 필요한지 모르겠다.
+ 4.controller 
+   요청한 경로로 보내주는거 (데이터도 집어넣어서 보내주는 듯 하다)
+ 5.filter 인코딩이 안되어서  학원에서 공부하자
+ 6.interceptor 위와 같음
+ 7.scheduler 일정 시간마다 작동하는거
+
+
+
+
+내일 학원에서 물어볼 것
+
+   스프링 MVC 정적 리소스 
+1. 
+  servlet-context에서 
+	<resources mapping="/resources/**" location="/resources/" /> -> 가상경로 mapping=는 내가정한 이름 location=는 실제 이름
+ 이 부분이 mapper의
+	<mapper namespace="edu.springboard.mapper.boardMapper"> -> 내가 dao에 정해둔 namespace와 같은걸 찾아서 하는거
+
+
+
+
+스프링 과제 순서
+1. 기본설정을 작성
+2. html틀을 만든다. 
+3. dao -> service -> controller 순서로 작성한다
+
+
+
+
