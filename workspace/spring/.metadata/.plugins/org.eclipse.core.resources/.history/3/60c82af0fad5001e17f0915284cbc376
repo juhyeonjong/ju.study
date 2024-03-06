@@ -1,0 +1,12 @@
+package edu.springboard.filter;
+
+import javax.servlet.Filter;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ContentFilter implements Filter {
+
+}
+
+

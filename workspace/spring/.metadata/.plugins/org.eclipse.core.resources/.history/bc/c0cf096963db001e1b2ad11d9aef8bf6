@@ -1,0 +1,10 @@
+package jhj.springHomework.service;
+
+import org.springframework.stereotype.Service;
+
+import jhj.springHomework.vo.MemberVO;
+
+@Service
+public interface MemberService {
+	MemberVO selectLogin(MemberVO vo);
+}

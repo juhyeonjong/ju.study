@@ -1,0 +1,5 @@
+package edu.springboard.interceptor;
+
+public class UserInterceptor {
+
+}

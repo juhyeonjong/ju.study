@@ -1,0 +1,50 @@
+package jhj.springHomework.controller;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+
+import jhj.springHomework.service.MemberService;
+import jhj.springHomework.vo.MemberVO;
+
+@Controller
+public class UserController {
+
+	//멤버 서비스를 주입 시킨다
+	@Autowired
+	MemberService memberService;
+	
+	//스크립트 코드를 적을 response와 홈으로 보내기 위해 사용할 request + 정보를 MemberVO에 담아서 요청
+	@RequestMapping(value="join.do", method = RequestMethod.POST)
+	public void join(MemberVO vo, HttpServletResponse response ,HttpServletRequest request) throws IOException {
+		
+		System.out.println("mid:"+vo.getMid());
+		
+		MemberVO join = new MemberVO();
+		join.setMid(vo.getMid());
+		join.setMpw(vo.getMpw());
+		join.setMname(vo.getMname());
+		join.setMemail(vo.getMemail());
+		join.setMphone(vo.getMphone());
+		join.setMaddr(vo.getMaddr());
+		
+		int result = memberService.insert(join);
+		System.out.println(result);
+
+		//인코딩 해주는거(아마 아래 글쓰는거 때문인듯)
+		response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		//flush는 커밋 같은거(다 하고 적용시켜달라는 뜻)
+		response.getWriter().append("<script>alert('회원가입 성공!');location.href='"
+					   				+ request.getContextPath()
+					   				+ "'</script>").flush();
+	}
+}

@@ -1,0 +1,9 @@
+package edu.springboard.controller;
+
+public class Snippet {
+	<tr>
+		<th align="right">Á¦¸ñ :</th>
+		<td><input type="text" name="btitle"></td>
+	</tr>
+}
+

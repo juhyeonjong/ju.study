@@ -1,0 +1,28 @@
+<%@page import="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<srcipt src="<%=request.getContextPath()%>/js/jquery-3.7.1.min.js"></srcipt>
+<script>
+	function callAjaxText(){
+		System.out.println("121");
+		$.ajax({
+			url:"callText.do",
+			success:function(data){
+				$("#result").html(data);
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<h2>ajax 예제 페이지</h2>
+	<button onclick="callAjaxText()">ajax1</button>
+	<button onclick="callAjaxJson()">json</button>
+	<div id="result"></div>
+</body>
+</html>

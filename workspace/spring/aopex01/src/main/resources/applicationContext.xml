@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!-- aop에 대한 aspect 객체를 생성해 준다. -->
+	<bean id="logAOP" class="aopex01.LogAOP" />
+	
+	<aop:config>
+		<aop:aspect id="logger" ref="logAOP">
+			<aop:pointcut expression="within(aopex01.A)" id="publicA"/>
+			<aop:before method="beforeLog" pointcut-ref="publicA"/>
+			
+			<aop:pointcut expression="within(aopex01.B)" id="publicB"/>
+			<aop:after-throwing method="afterLog" pointcut-ref="publicB"/>
+			<!-- 
+				joinpoint after-returnning 은 핵심로직이 정상 종료인 경우 실행
+				joinpoint after-throwing은 핵심로직이 비정상 종료인 경우 실행
+				joinpoint after는 핵심로직 실행 후 무조건 실행
+			 -->
+			 <aop:pointcut expression="within(aopex01.C)" id="publicC"/>
+			 <aop:around method="aroundLog" pointcut-ref="publicC"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<context:component-scan base-package="aopex01" />
+
+
+</beans>

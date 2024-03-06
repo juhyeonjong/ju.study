@@ -1,0 +1,5 @@
+package edu.springboard.service;
+
+public class UserAuthenticationService {
+
+}

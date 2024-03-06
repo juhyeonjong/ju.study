@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="appex01"/>
+<aop-project name="springboard"/>
+<aop-project name="aopex02">
+<aspect-definition advice-class-name="aopex02.LogAOP" advice-method-name="afterLog(org.aspectj.lang.JoinPoint)" advice-type="AFTER" aspect-end-line-number="10" aspect-name="logAOP" aspect-start-line-number="10" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" pointcut-expression="within(aopex02.B)" proxy-target-class="false">
+<aop-reference advice-type="AFTER" bean="1:BeansModel|2:aopex02|3:src/main/resources/applicationContext.xml|7:beans:8|8:b:8" bean-file="/aopex02/src/main/resources/applicationContext.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" source="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{LogAOP.java[LogAOP~afterLog~QJoinPoint;" source-start-line="20" target="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{B.java[B~sum~I~I" target-start-line="8"/>
+<aop-reference advice-type="AFTER" bean="1:BeansModel|2:aopex02|3:src/main/resources/applicationContext.xml|7:beans:8|8:b:8" bean-file="/aopex02/src/main/resources/applicationContext.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" source="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{LogAOP.java[LogAOP~afterLog~QJoinPoint;" source-start-line="20" target="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{B.java[B~minus~I~I" target-start-line="12"/>
+</aspect-definition>
+<aspect-definition advice-class-name="aopex02.LogAOP" advice-method-name="beforeLog(org.aspectj.lang.JoinPoint)" advice-type="BEFORE" aspect-end-line-number="10" aspect-name="logAOP" aspect-start-line-number="10" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" pointcut-expression="within(aopex02.A)" proxy-target-class="false">
+<aop-reference advice-type="BEFORE" bean="1:BeansModel|2:aopex02|3:src/main/resources/applicationContext.xml|7:beans:8|8:a:8" bean-file="/aopex02/src/main/resources/applicationContext.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" source="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{LogAOP.java[LogAOP~beforeLog~QJoinPoint;" source-start-line="14" target="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{A.java[A~method01" target-start-line="8"/>
+<aop-reference advice-type="BEFORE" bean="1:BeansModel|2:aopex02|3:src/main/resources/applicationContext.xml|7:beans:8|8:a:8" bean-file="/aopex02/src/main/resources/applicationContext.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" source="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{LogAOP.java[LogAOP~beforeLog~QJoinPoint;" source-start-line="14" target="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{A.java[A~method02" target-start-line="13"/>
+</aspect-definition>
+</aop-project>
+<aop-project name="springHomework"/>
+<aop-project name="springAjaxFileuploadPjt"/>
+<aop-project name="springMVCboard"/>
+<aop-project name="diex03"/>
+<aop-project name="diex01"/>
+<aop-project name="diex02"/>
+<aop-project name="diex04"/>
+<aop-project name="Project"/>
+</aop-reference-model>

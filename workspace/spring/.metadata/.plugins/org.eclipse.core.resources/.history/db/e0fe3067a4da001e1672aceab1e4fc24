@@ -1,0 +1,9 @@
+package jhj.springHomework.service;
+
+import jhj.springHomework.vo.MemberVO;
+
+public class MemberService {
+	MemberVO selectLogin(MemberVO vo) {
+		return null;
+	}
+}

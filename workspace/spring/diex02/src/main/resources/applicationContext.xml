@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="person01" class="diex02.Person">
+		<constructor-arg value="홍길동" />
+		<constructor-arg value="30" />
+		<constructor-arg value="전주" />
+	</bean><!-- Person person01 = new Person("홍길동",30,"전주") -->
+
+	<!-- 
+		Person person02 = new Person("고길동");
+	 -->
+	 <bean id="person02" class="diex02.Person">
+	 	<constructor-arg value="고길동"/>
+	 </bean>
+	 
+	 
+	 <bean id="child01" class="diex02.Child" />
+	 
+	 <bean id="parent01" class="diex02.Parent">
+	 	<constructor-arg>
+	 		<ref bean="child01" />
+	 	</constructor-arg>
+	 </bean>
+	 
+	 
+	 
+	 
+</beans>

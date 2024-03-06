@@ -1,0 +1,5 @@
+package jhj.springHomework.service;
+
+public class MemberService {
+
+}

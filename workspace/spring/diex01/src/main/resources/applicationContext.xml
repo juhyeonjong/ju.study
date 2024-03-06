@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="p1" class="diex01.Person">
+		<property name="name" value="홍길동"></property>
+	</bean>
+	
+	<!-- 부품인 Child 타입 빈을 선언하세요 이때 해당 빈의 이름은 child01입니다. -->
+	<bean id="child01" class="diex01.Child" />
+	
+	<!-- Parent 타입의 빈을 선언하세요 이때 해당빈의 이름은 parent01입니다. -->
+	<bean id="parent01" class="diex01.Parent"> <!--Parent parent01 =  new Parent() -->
+		<property name="c">
+			<ref bean="child01" /> <!-- parent01.setC(child01) -->
+		</property>
+	</bean>
+	
+	
+	<bean id="person1" class="diex01.Person">
+		<property name="name" value="홍길동" />
+		<property name="age" value="30" />
+		<property name="addr" value="전주" />
+	</bean>
+	
+	<bean id="person2" class="diex01.Person">
+		<property name="name" value="고길동" />
+		<property name="age" value="23" />
+		<property name="addr" value="전주" />
+	</bean>
+	
+	<bean id="student1" class="diex01.Student">
+		<property name="p" >
+			<ref bean="person2" />
+		</property>
+		<property name="schoolNM" value="이젠" />
+		<property name="year" value="3" />
+	</bean>
+</beans>
+
+
+
+
+
+

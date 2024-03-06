@@ -1,0 +1,100 @@
+package jhj.springHomework.controller;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import jhj.springHomework.service.MemberService;
+import jhj.springHomework.vo.MemberVO;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class HomeController {
+	
+	@Autowired
+	MemberService memberService;
+	
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	// value="/"이건 처음 기본 사이트라는 뜻
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "home";
+	}
+	
+	
+	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	public void login(MemberVO vo,HttpSession session, HttpServletResponse response ,HttpServletRequest request) throws IOException {
+
+		// 위에서 MemberVO를  받아와서 자동으로 vo안에 값이 담기는듯(내가 적은 값)
+		System.out.println("mid:"+vo.getMid());
+		System.out.println("mpassword:"+vo.getMpw());
+		
+		// 적은 값을 서비스 -> dao를 통해 select돌리고 그 값을 반환 받음 값이 없으면 null반환
+		MemberVO checkVO = memberService.selectLogin(vo);
+		//데이터를 가져온 뒤 db에서 select까지 거친 상태 -> 세션안에 로그인 정보를 집어 넣은뒤 홈페이지를 이동시킨다
+		
+		System.out.println(checkVO);
+		//세션에 넣는법
+		
+		if(checkVO != null) {
+			
+			// member 객체 생성해서 받아온 값을 vo안에 집어넣는다
+			MemberVO login = new MemberVO();
+			login.setMid(checkVO.getMid());
+			login.setMno(checkVO.getMno());
+			login.setMname(checkVO.getMname());
+			
+			//세션안에 그 값을 login이라는 이름으로 집어 넣는다
+			session.setAttribute("login", login);
+			
+			response.setContentType("text/html; charset=utf-8");
+			response.setCharacterEncoding("UTF-8");
+			
+			response
+				.getWriter()
+				.append("<script>alert('로그인 성공!');location.href='"
+						+request.getContextPath()+"'</script>").flush();
+			
+		}else {
+			response.setContentType("text/html; charset=utf-8");
+			response.setCharacterEncoding("UTF-8");
+			
+			response
+			.getWriter()
+			.append("<script>alert('로그인 실패!');location.href='"
+					+request.getContextPath()+"/login.do'</script>").flush();
+		}
+	}
+		
+}
+	
+}

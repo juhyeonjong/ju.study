@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="child" class="diex02.Child" /> <!-- Child child = new Child(); -->
+	
+	<bean id="person01" class="diex02.Person">
+		<constructor-arg value="홍길동" />
+		<constructor-arg value="30" />
+		<constructor-arg value="전주" />
+	</bean>
+	
+	<bean id="person02" class="diex02.Person">
+		<constructor-arg value="양길동" />
+		<constructor-arg value="20" />
+		<constructor-arg value="서울" />
+	</bean>
+	
+	<bean id="student01" class="diex02.Student">
+		<constructor-arg value="이젠" />
+		<constructor-arg value="3" />
+		<constructor-arg>
+			<ref bean="person01"/>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="child"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="student02" class="diex02.Student">
+		<constructor-arg value="아트" />
+		<constructor-arg value="3" />
+		<constructor-arg>
+			<ref bean="person02"/>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="child"/>
+		</constructor-arg>
+	</bean>
+
+</beans>
+

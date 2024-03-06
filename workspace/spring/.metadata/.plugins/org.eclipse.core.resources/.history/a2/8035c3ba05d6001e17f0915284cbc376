@@ -1,0 +1,19 @@
+package edu.springboard.scheduler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import edu.springboard.service.BoardService;
+
+@Component
+public class SampleScheduler {
+	
+	@Autowired
+	BoardService boardService;
+	
+	@Scheduled(cron = "0 0 0 0 0 0 0")
+	public void job1() {
+		System.out.println("10초 마다 실행");
+	}
+}

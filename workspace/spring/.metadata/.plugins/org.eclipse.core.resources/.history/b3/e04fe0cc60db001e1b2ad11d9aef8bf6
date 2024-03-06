@@ -1,0 +1,6 @@
+package jhj.springHomework.controller;
+
+@controller
+public class UserController {
+
+}

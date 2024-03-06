@@ -1,0 +1,16 @@
+package jhj.springHomework.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import jhj.springHomework.service.MemberService;
+
+@Controller
+public class UserController {
+
+	//멤버 서비스를 주입 시킨다
+	@Autowired
+	MemberService memberService;
+	
+	
+}
