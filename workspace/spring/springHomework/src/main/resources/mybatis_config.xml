@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="jhj.springHomework.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="jhj.springHomework.vo.BoardListVO" alias="boardListVO"/>
 	</typeAliases>
 </configuration>

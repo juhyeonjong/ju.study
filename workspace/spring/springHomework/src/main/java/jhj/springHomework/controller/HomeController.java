@@ -83,7 +83,7 @@ public class HomeController {
 			//flush는 커밋 같은거(다 하고 적용시켜달라는 뜻)
 			response.getWriter().append("<script>alert('로그인 성공!');location.href='"
 						   				+ request.getContextPath()
-						   				+ "/notice.do'</script>").flush();
+						   				+ "/board/notice.do'</script>").flush();
 			
 		}else {
 			response.setContentType("text/html; charset=utf-8");
@@ -104,11 +104,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	//로그인 성공시 올 공지사항 페이지
-	@RequestMapping(value="notice.do", method=RequestMethod.GET)
-	public String notice() {
-		return "board/noticeBoard";
-	}
 	
 	//회원가입 페이지
 	@RequestMapping(value="join.do", method=RequestMethod.GET)

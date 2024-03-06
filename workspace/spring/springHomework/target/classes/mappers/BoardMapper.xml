@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jhj.springHomework.mapper.boardMapper">
+
+	<select id="selectAll" resultType="boardListVO">
+		SELECT * FROM board b inner join member m on b.mno = m.mno ORDER BY bno
+	</select>
+	
+	<select id="selectNum" resultType="boardListVO" parameterType="BoardListVO">
+		SELECT * FROM board b inner join member m on b.mno = m.mno 
+		<if test='search eq 1'>
+			where btitle like concat('%',#{searchText},'%') or bcontent like concat('%',#{searchText},'%') or m.mname like concat('%',#{searchText},'%')
+		</if>
+		
+		<if test='search eq 2 '>
+			where btitle like concat('%',#{searchText},'%') or bcontent like concat('%',#{searchText},'%')
+		</if>
+		
+		<if test='search eq 3'>
+			where m.mname like concat('%',#{searchText},'%')
+		</if>
+	</select>
+	
+</mapper>

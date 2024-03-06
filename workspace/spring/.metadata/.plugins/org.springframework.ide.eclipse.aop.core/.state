@@ -12,8 +12,8 @@
 <aop-reference advice-type="BEFORE" bean="1:BeansModel|2:aopex02|3:src/main/resources/applicationContext.xml|7:beans:8|8:a:8" bean-file="/aopex02/src/main/resources/applicationContext.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/aopex02/src/main/resources/applicationContext.xml" source="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{LogAOP.java[LogAOP~beforeLog~QJoinPoint;" source-start-line="14" target="=aopex02/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;aopex02{A.java[A~method02" target-start-line="13"/>
 </aspect-definition>
 </aop-project>
-<aop-project name="springHomework"/>
 <aop-project name="springAjaxFileuploadPjt"/>
+<aop-project name="springHomework"/>
 <aop-project name="springMVCboard"/>
 <aop-project name="diex03"/>
 <aop-project name="diex01"/>
