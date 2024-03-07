@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jhj.springHomework.dao.BoardDAO;
 import jhj.springHomework.vo.BoardListVO;
+import jhj.springHomework.vo.PageVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -22,6 +23,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardListVO> select1(BoardListVO vo) {
 		return boardDAO.select1(vo);
+	}
+
+	@Override
+	public List<BoardListVO> getListPaging(PageVO pagevo) {
+		return boardDAO.page(pagevo);
 	}
 
 }

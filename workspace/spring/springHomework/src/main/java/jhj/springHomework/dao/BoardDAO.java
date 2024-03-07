@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jhj.springHomework.vo.BoardListVO;
+import jhj.springHomework.vo.PageVO;
 
 
 @Repository
@@ -23,6 +24,10 @@ public class BoardDAO {
 	
 	public List<BoardListVO> select1(BoardListVO vo){
 		return sqlSession.selectList(namespace+".selectNum", vo);
+	}
+	
+	public List<BoardListVO> page(PageVO pagevo){
+		return sqlSession.selectList(namespace+".page", pagevo);
 	}
 	
 }

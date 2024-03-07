@@ -1,5 +1,6 @@
 package jhj.springHomework.controller;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,38 +11,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jhj.springHomework.service.BoardService;
 import jhj.springHomework.vo.BoardListVO;
+import jhj.springHomework.vo.PageVO;
 
 
 
-//board·Î µé¾î¿Ã°æ¿ì ÀÌ ÄÁÆ®·Ñ·¯ ½ÇÇà½ÃÅ°´Â µí
+//boardï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½
 @RequestMapping(value="/board")
 @Controller
 public class BoardController {
 	
-	//»ç¿ëÇÒ ¼­ºñ½º ÂüÁ¶
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Autowired
 	BoardService boardService;
 	
-	//·Î±×ÀÎ ¼º°ø½Ã ¿Ã °øÁö»çÇ× ÆäÀÌÁö /´Â ¿Ö ÇÊ¿äÇÏÁö?
+	//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ /ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½?
 	@RequestMapping(value="/notice.do", method=RequestMethod.GET)
-	public String notice(Model model) {
+	public String notice(Model model/*, PageVO vo*/) {
 		
-		//selectList¶ó´Â sqlsessionÇÔ¼ö¸¦ »ç¿ëÇß±â¿¡ ¸®½ºÆ®Çö½ÄÀ¸·Î ¸®ÅÏµÇ°í ¹Þ´Â´Ù
+		//selectListï¿½ï¿½ï¿½ sqlsessionï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß±â¿¡ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÏµÇ°ï¿½ ï¿½Þ´Â´ï¿½
 		List<BoardListVO> list = boardService.selectAll();
-		
+		//List<BoardListVO> list = boardService.getListPaging(vo);
 		model.addAttribute("blist", list);
 		
 		return "board/noticeBoard";
 	}
 	
-	// °Ë»öÇÑ °æ¿ì
+	// ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping(value="/notice.do", method=RequestMethod.POST)
 	public String noticeSearch(Model model, BoardListVO vo) {
 
 		System.out.println(vo.getSearch());
 		System.out.println(vo.getSearchText());
 		
-		//°Ë»öÇÑ vo°ª°ú ÇÔ²² ½ÇÇà
+		//ï¿½Ë»ï¿½ï¿½ï¿½ voï¿½ï¿½ï¿½ï¿½ ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½
 		List<BoardListVO> list = boardService.select1(vo);
 		model.addAttribute("blist", list);
 		System.out.println(list);

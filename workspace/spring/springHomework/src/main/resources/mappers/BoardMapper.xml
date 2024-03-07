@@ -22,4 +22,9 @@
 		</if>
 	</select>
 	
+	<select id="page" resultType="boardListVO">
+		 select * from board limit #{skip},#{amount} 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+	</select>
+	
 </mapper>
