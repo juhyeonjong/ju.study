@@ -14,4 +14,6 @@ public interface BoardService {
 
     /* 게시판 목록(페이징 적용) */
     public List<BoardListVO> getListPaging(PageVO pagevo);
+    
+    public int getTotal();
 }

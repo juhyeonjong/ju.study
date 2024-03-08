@@ -7,6 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-3.7.1.min.js"></script>
+<script>
+	$(function(){
+		
+		let moveForm = $("#moveForm");
+		
+		$(".pageInfo a").on("click", function(e){
+		 	console.log("1234");
+	        e.preventDefault();
+	        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+	        moveForm.attr("action","notice.do");
+	        moveForm.submit();
+			
+		});
+	});
+</script>
+
 </head>
 <body>
 	<a href="notice.do">공지사항</a>
@@ -14,7 +31,7 @@
 	<a href="qna.do"> Q&A게시판</a>
 	<!-- 세션에 있는걸 바로 가져와지는 원리 -->
 	<span>
-		${login.mname}님 환영합니다
+		${sessionScope.login.mname}님 환영합니다
 	</span>
 	<a href="<%=request.getContextPath() %>/logout.do"> 로그아웃</a>
 	<br>
@@ -59,9 +76,43 @@
 		</c:forEach>
 	</table>
 	
+	<div class="pageInfo_wrap" >
+        <div class="pageInfo_area">
+		 	<ul>
+		 	
+		 	<!-- 이전페이지 버튼 -->
+                <c:if test="${pageMaker.prev}">
+                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+                </c:if>
+		 	
+		 	
+  			 <!-- 각 번호 페이지 버튼 -->
+                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <li class="pageInfo ${pageMaker.aa == num ? "active":"" }"><a href="${num}">${num}</a></li>
+                </c:forEach>
+                
+             <!-- 다음페이지 버튼 -->
+                <c:if test="${pageMaker.next}">
+                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+                </c:if>
+                 
+ 			</ul>
+        </div>
+    </div>
+	
+	<!-- 다른데 갔다가 다시왔을 때 정보저장을 위한 히든 -->
+	<form id="moveForm" method="get">
+		<input type="text" name="pageNum" value="${pageMaker.aa }">
+    	<input type="text" name="amount" value="${pageMaker.amount }">
+	</form>
 	
 	<br>
-	<a href="post.do">등록</a>
+	<c:if test="${login.mid == 'admin'}">
+		<a href="post.do">등록</a>
+	</c:if>
 	
+	<c:if test="${login.mid != 'admin'}">
+		<a href="post.do">드응록</a>
+	</c:if>
 </body>
 </html>

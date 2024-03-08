@@ -2,6 +2,7 @@ package jhj.springHomework.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardListVO> getListPaging(PageVO pagevo) {
 		return boardDAO.page(pagevo);
+	}
+
+	@Override
+	public int getTotal() {
+		return boardDAO.getTotal();
 	}
 
 }

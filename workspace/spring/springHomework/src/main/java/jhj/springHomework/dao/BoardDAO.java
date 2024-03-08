@@ -2,6 +2,7 @@ package jhj.springHomework.dao;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,10 @@ public class BoardDAO {
 	
 	public List<BoardListVO> page(PageVO pagevo){
 		return sqlSession.selectList(namespace+".page", pagevo);
+	}
+	
+	public int getTotal(){
+		return sqlSession.selectOne(namespace+".getTotal");
 	}
 	
 }

@@ -1,6 +1,5 @@
 package jhj.springHomework.controller;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jhj.springHomework.service.BoardService;
 import jhj.springHomework.vo.BoardListVO;
+import jhj.springHomework.vo.PageMakerVO;
 import jhj.springHomework.vo.PageVO;
 
 
@@ -26,12 +26,16 @@ public class BoardController {
 	
 	//�α��� ������ �� �������� ������ /�� �� �ʿ�����?
 	@RequestMapping(value="/notice.do", method=RequestMethod.GET)
-	public String notice(Model model/*, PageVO vo*/) {
-		
-		//selectList��� sqlsession�Լ��� ����߱⿡ ����Ʈ�������� ���ϵǰ� �޴´�
-		List<BoardListVO> list = boardService.selectAll();
-		//List<BoardListVO> list = boardService.getListPaging(vo);
+	public String notice(Model model, PageVO vo) {
+		System.out.println(vo);
+		//List<BoardListVO> list = boardService.selectAll();
+		List<BoardListVO> list = boardService.getListPaging(vo);
 		model.addAttribute("blist", list);
+		int total = boardService.getTotal();
+		PageMakerVO pageMake = new PageMakerVO(vo, total);
+		System.out.println(pageMake.isNext());
+		System.out.println(pageMake.isPrev());
+		model.addAttribute("pageMaker", pageMake);
 		
 		return "board/noticeBoard";
 	}
@@ -43,10 +47,8 @@ public class BoardController {
 		System.out.println(vo.getSearch());
 		System.out.println(vo.getSearchText());
 		
-		//�˻��� vo���� �Բ� ����
 		List<BoardListVO> list = boardService.select1(vo);
 		model.addAttribute("blist", list);
-		System.out.println(list);
 
 		return "board/noticeBoard";
 	}

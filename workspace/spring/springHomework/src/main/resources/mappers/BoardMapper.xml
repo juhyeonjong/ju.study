@@ -27,4 +27,8 @@
         <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
 	</select>
 	
+	
+	<select id="getTotal" resultType="int" >
+		select count(*) from board
+	</select>
 </mapper>
