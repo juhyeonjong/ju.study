@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.top_frame{
+	width: 90%;
+    margin: 20px auto;
+}
+
+
+.top_frame h2{
+	color : red;
+	font-size : 1em;
+	text-align : center;
+	
+}
+
+.top_frame hr{
+	color : grey;
+	background-color : grey;
+	height: 2px;
+}
+
+.main_frame{
+	width: 90%;
+    margin: 20px auto;
+}
+
+.center_cont{
+	display: flex;
+    justify-content: center;
+}

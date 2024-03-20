@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--  클래스 풀네임의 별칭을 지정하는 공간-->
+	<typeAliases>
+		<typeAlias type="edu.ezen.practice.vo.UserVO" alias="userVO"/>
+		<typeAlias type="edu.ezen.practice.vo.BoardVO" alias="boardVO"/>
+	</typeAliases>
+</configuration>
