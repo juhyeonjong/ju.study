@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sample</title>
+</head>
+<body>
+	<h2>sample 페이지</h2>
+	도커를 사용하여 실행합니다.
+</body>
+</html>
